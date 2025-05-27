@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inban: Heart of the Village</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/1348980496964649011/1376968680461697174/favicon-32x32.png?ex=68374184&is=6835f004&hm=29f5fcd21fdbdb8de26c5af8daa13fd2a4bf03c5f67b7bf434b60b62d7142558&">
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff3e6; /* warm cream background */
+    color: #4a3b2f;
+    line-height: 1.6;
+  }
+  a {
+    color: #8b5c2b;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+
+  /* Fixed Logo top-left */
+  .fixed-logo {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 120px;
+    height: auto;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Main content spacing */
+  main {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Header with background image and overlay */
+  header {
+    background: url('https://cdn.discordapp.com/attachments/1312793518317637803/1376957270151266364/raw.png?ex=683736e3&is=6835e563&hm=76e64931f66404b05c7b313424efc10e71d12e8d50c7e5d5ffb2aa1b3fc92495&') center/cover no-repeat;
+    min-height: 100vh;
+    padding-top: 150px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(59, 47, 47, 0.6);
+    z-index: 0;
+  }
+  header > * {
+    position: relative;
+    z-index: 1;
+  }
+  header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+  }
+  header p.tagline {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    max-width: 500px;
+  }
+  header .btn {
+    background-color: #8b5c2b;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    color: white;
+    cursor: pointer;
+  }
+  header .btn:hover {
+    background-color: #a26934;
+  }
+
+  /* Section Titles */
+  h2.section-title {
+    font-size: 2.5rem;
+    color: #6b4b28;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Paragraph styles */
+  p.lead, #about p, #about-studio p {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1rem;
+    color: #4a3b2f;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  /* Features Grid */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .feature-item {
+    flex: 1 1 280px;
+    padding: 15px 10px;
+    text-align: center;
+  }
+  .feature-icon {
+    font-size: 48px;
+    color: #8b5c2b;
+    margin-bottom: 15px;
+  }
+  .feature-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #6b4b28;
+  }
+  .feature-desc {
+    color: #6b533d;
+    font-size: 1rem;
+  }
+
+  /* Trailer */
+  .trailer iframe {
+    display: block;
+    max-width: 720px;
+    width: 100%;
+    height: 405px;
+    margin: 30px auto 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(139, 92, 43, 0.25);
+  }
+
+  /* Social */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8b5c2b;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  .social-links a:hover {
+    background-color: #a26934;
+  }
+  .social-links img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #f1e4d1;
+    color: #6b4b28;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 60px;
+  }
+
+  /* About RenderVault Games Section */
+  #about-studio {
+    border-top: 3px solid #8b5c2b;
+    padding-top: 40px;
+    margin-top: 40px;
+  }
+  #made-by {
+    border-top: 3px solid #8b5c2b;
+    padding: 20px 0 0 0;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  #made-by a {
+    color: #8b5c2b;
+    text-decoration: underline;
+  }
+  #made-by a:hover {
+    color: #a26934;
+  }
+
+  /* Launching Soon Section */
+  #launching-soon {
+    border-top: 3px solid #8b5c2b;
+    margin-top: 40px;
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  #launching-soon .text {
+    flex: 1 1 300px;
+  }
+  #launching-soon .text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #6b4b28;
+  }
+  #launching-soon .text p {
+    font-size: 1.1rem;
+    color: #4a3b2f;
+  }
+  #launching-soon .social-image {
+    flex: 0 0 150px;
+  }
+  #launching-soon .social-image img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  #launching-soon .social-image img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.8rem;
+    }
+    .feature-item {
+      flex: 1 1 100%;
+    }
+    .trailer iframe {
+      height: 240px;
+    }
+    .fixed-logo {
+      width: 90px;
+      top: 10px;
+      left: 10px;
+    }
+    #launching-soon {
+      flex-direction: column;
+    }
+    #launching-soon .social-image {
+      margin-top: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed Transparent Logo top-left -->
+<a href="#top" class="fixed-logo" aria-label="Go to homepage">
+  <img
+    src="https://cdn.discordapp.com/attachments/1348980496964649011/1376863797352071240/g3.png?ex=6836dfd6&is=68358e56&hm=7016fb85bf001c52533b20bbdef37956d709a3624ec4ac99686b328b78117dd6&"
+    alt="Inban: Heart of the Village Logo"
+    style="width: 100%; height: auto;"
+  />
+</a>
+
+<header id="top">
+  <h1>Inban: Heart of the Village</h1>
+  <p class="tagline">A cozy journey through childhood, friendship, and village life in Tamil Nadu.</p>
+  <button class="btn" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">Discover More</button>
+</header>
+
+<main class="container">
+
+  <!-- About -->
+  <section id="about" aria-label="About Inban game">
+    <h2 class="section-title">About the Game</h2>
+    <p class="lead">
+      Inban is a cozy story-driven game that takes players on a heartwarming 4–5 hour journey through a peaceful Tamil Nadu village.
+      Engage with villagers, experience local festivals, and shape your future through meaningful choices.
+    </p>
+  </section>
+
+  <!-- Features -->
+  <section id="features" aria-label="Game Features">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features">
+      <div class="feature-item" tabindex="0" aria-describedby="desc1">
+        <div class="feature-icon" aria-hidden="true">🎮</div>
+        <h3 class="feature-title">Immersive Story</h3>
+        <p id="desc1" class="feature-desc">Experience a rich narrative filled with emotional moments, friendships, and village traditions.</p>
+      </div>
+      <div class="feature-item" tabindex="0" aria-describedby="desc2">
+        <div class="feature-icon" aria-hidden="true">🎨</div>
+        <h3 class="feature-title">Beautiful Art</h3>
+        <p id="desc2" class="feature-desc">Enjoy hand-crafted visuals inspired by Tamil culture and scenic village landscapes.</p>
+      </div>
+      <div class="feature-item" tabindex="0" aria-describedby="desc3">
+        <div class="feature-icon" aria-hidden="true">⏳</div>
+        <h3 class="feature-title">4-5 Hour Playtime</h3>
+        <p id="desc3" class="feature-desc">Perfect for a cozy afternoon, the game delivers a complete experience with cutscenes and minigames.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trailer -->
+  <section id="trailer" aria-label="Game Trailer">
+    <h2 class="section-title">Watch the Announcement Trailer</h2>
+    <div class="trailer">
+      <iframe
+        src="https://www.youtube.com/embed/v=koBqbCzSN7c"
+        title="Inban Game Trailer"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- Launching Soon -->
+  <section id="launching-soon" aria-label="Launching Soon on PC and Mobile">
+    <div class="text">
+      <h2>Launching Soon on PC & Mobile</h2>
+      <p>Stay tuned for the official release! Follow us on social media for the latest updates and sneak peeks.</p>
+    </div>
+    <div class="social-image">
+      <a href="https://discord.gg/RrKKjMG7qS" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord">
+        <img
+          src="https://cdn.discordapp.com/attachments/1348980496964649011/1376863797352071240/g3.png?ex=6836dfd6&is=68358e56&hm=7016fb85bf001c52533b20bbdef37956d709a3624ec4ac99686b328b78117dd6&"
+          alt="Discord Logo"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- Social Links -->
+  <nav class="social-links" aria-label="Social media links">
+    <a href="https://discord.gg/RrKKjMG7qS" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+      <img src="https://cdn.discordapp.com/attachments/1312793518317637803/1376963796253413526/discord-thumb.png?ex=68373cf7&is=6835eb77&hm=689d3184214a2013cda74900c05d0c9e824ce38894c3a1f7633df57909890498&" alt="Discord Icon" />
+    </a>
+    <a href="https://www.instagram.com/render_vault_games/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram Icon" />
+    </a>
+    <a href="https://www.youtube.com/@RenderVaultGames-Official" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Icon" />
+    </a>
+  </nav>
+
+  <!-- About RenderVault Games -->
+  <section id="about-studio" aria-label="About RenderVault Games">
+    <h2 class="section-title">About RenderVault Games</h2>
+    <p>
+      RenderVault Games is a passionate indie studio based in India, dedicated to crafting warm and culturally rich gaming experiences.
+      Our team specializes in blending storytelling, art, and gameplay to bring unique worlds to life.
+    </p>
+  </section>
+
+  <!-- Made By -->
+  <div id="made-by">
+    <p>
+      Made with ❤️ by
+      <a href="https://discord.com/users/1094232053198884894" target="_blank" rel="noopener noreferrer">Akash G</a>
+      &amp; RenderVault Games
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 RenderVault Games. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

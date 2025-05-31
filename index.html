@@ -394,18 +394,50 @@
   Your browser does not support the audio element.
 </audio>
 
+<button id="mute-btn" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #d97706;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+">🔇 Mute</button>
+
 <script>
   const bgMusic = document.getElementById('background-music');
-  bgMusic.volume = 0.1; // Set volume low (0.0 to 1.0)
-  bgMusic.muted = false; // Unmute to allow sound
+  const muteBtn = document.getElementById('mute-btn');
 
-  // Optional: Sometimes autoplay with sound is blocked by browsers
-  // So you can add a small user interaction listener to enable sound
-  document.addEventListener('click', () => {
-    bgMusic.muted = false;
-    bgMusic.play();
+  // Initial volume and unmute for autoplay compliance
+  bgMusic.volume = 0.1;
+  bgMusic.muted = false;
+
+  // Toggle mute/unmute on button click
+  muteBtn.addEventListener('click', () => {
+    if (bgMusic.muted) {
+      bgMusic.muted = false;
+      muteBtn.textContent = '🔇 Mute';
+    } else {
+      bgMusic.muted = true;
+      muteBtn.textContent = '🔊 Unmute';
+    }
   });
+
+  // Optional: unmute on first user interaction if muted initially (browser autoplay policy)
+  document.addEventListener('click', () => {
+    if (bgMusic.muted) {
+      bgMusic.muted = false;
+      muteBtn.textContent = '🔇 Mute';
+      bgMusic.play();
+    }
+  }, { once: true });
 </script>
+
 
 
 

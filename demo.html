@@ -49,6 +49,8 @@
       text-decoration: none;
       border-radius: 40px;
       transition: background-color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
     }
     .download-button:hover {
       background-color: #a86c3b;
@@ -119,9 +121,9 @@
 
     <div class="download-box">
       <p style="font-size: 1.1rem;">Click below to download the demo:</p>
-      <a href="https://example.com/inban-demo.zip" class="download-button" download>
+      <div class="download-button" onclick="alert('Sorry, the demo file has not been uploaded by RenderVault Games yet.')">
         ⬇ Download Demo (ZIP)
-      </a>
+      </div>
       <p style="margin-top: 20px; font-size: 0.95rem; color: #6b4f3b;">
         File size: ~500MB &nbsp; | &nbsp; Windows Only
       </p>

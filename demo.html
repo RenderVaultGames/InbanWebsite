@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download Inban Demo | Heart of the Village</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/1348980496964649011/1376968680461697174/favicon-32x32.png" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff8ed;
+      color: #4a3b2f;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8rem;
+      color: #6b4226;
+      margin-bottom: 10px;
+    }
+    p.description {
+      font-size: 1.2rem;
+      color: #5a4032;
+      margin-bottom: 30px;
+    }
+    .download-box {
+      background-color: #fff2dd;
+      border: 2px dashed #caa57a;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(139, 92, 43, 0.15);
+    }
+    .download-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 35px;
+      background-color: #8b5c2b;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: background-color 0.3s ease;
+    }
+    .download-button:hover {
+      background-color: #a86c3b;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #8b5c2b;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .donate-section {
+      margin-top: 80px;
+    }
+    .donate-button {
+      background-color: #d97706;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .donate-button:hover {
+      background-color: #f59e0b;
+    }
+    .donation-info {
+      display: none;
+      margin-top: 30px;
+      background-color: #fef3c7;
+      border: 2px dashed #fcd34d;
+      padding: 30px;
+      border-radius: 20px;
+    }
+    .donation-info p {
+      font-size: 1.1rem;
+      color: #78350f;
+      margin-bottom: 15px;
+    }
+    .donation-info img {
+      width: 180px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .download-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎮 Download Inban Demo</h1>
+    <p class="description">
+      Experience the warmth of village life and heart-touching childhood memories in the early demo of <strong>Inban: Heart of the Village</strong>.
+    </p>
+
+    <div class="download-box">
+      <p style="font-size: 1.1rem;">Click below to download the demo:</p>
+      <a href="https://example.com/inban-demo.zip" class="download-button" download>
+        ⬇ Download Demo (ZIP)
+      </a>
+      <p style="margin-top: 20px; font-size: 0.95rem; color: #6b4f3b;">
+        File size: ~500MB &nbsp; | &nbsp; Windows Only
+      </p>
+    </div>
+
+    <!-- Donation Section -->
+    <div class="donate-section">
+      <h2 style="margin-bottom: 20px;">❤️ Support Our Work</h2>
+      <button class="donate-button" onclick="toggleDonation()">Donate</button>
+      <div class="donation-info" id="donationInfo">
+        <p><strong>UPI ID:</strong> inban@upi</p>
+        <img src="https://cdn.discordapp.com/attachments/1348980496964649011/1376987745780504586/qr.png" alt="UPI QR Code" />
+        <p>Scan with any UPI app to support the development of Inban!</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Homepage</a>
+  </div>
+
+  <script>
+    function toggleDonation() {
+      const info = document.getElementById("donationInfo");
+      info.style.display = info.style.display === "none" || info.style.display === "" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>

@@ -407,28 +407,30 @@
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   z-index: 1000;
-">🔇 Mute</button>
+">🔊 Unmute</button>
 
 <script>
   const bgMusic = document.getElementById('background-music');
   const muteBtn = document.getElementById('mute-btn');
 
-  // Initial volume and unmute for autoplay compliance
-  bgMusic.volume = 0.1;
-  bgMusic.muted = false;
+  bgMusic.volume = 0.8; // low volume
+  // Keep muted true initially to allow autoplay
+  bgMusic.muted = true;
 
   // Toggle mute/unmute on button click
   muteBtn.addEventListener('click', () => {
     if (bgMusic.muted) {
       bgMusic.muted = false;
       muteBtn.textContent = '🔇 Mute';
+      bgMusic.play();
     } else {
       bgMusic.muted = true;
       muteBtn.textContent = '🔊 Unmute';
+      bgMusic.pause(); // optional pause on mute
     }
   });
 
-  // Optional: unmute on first user interaction if muted initially (browser autoplay policy)
+  // Optional: try to play on first user interaction (some browsers require user action)
   document.addEventListener('click', () => {
     if (bgMusic.muted) {
       bgMusic.muted = false;
